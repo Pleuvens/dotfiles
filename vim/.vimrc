@@ -16,8 +16,11 @@ Plugin 'gmarik/Vundle.vim'
 " NERD tree - tree explorer
 Plugin 'scrooloose/nerdtree'
 
+function FixupBase16(info)
+    !sed -i '/Base16hi/\! s/a:\(attr\|guisp\)/l:\1/g' ~/.vim/colors/*.vim
+endfunction
 " Base16 colorschemes
-Plugin 'chriskempson/base16-vim'
+Plugin 'chriskempson/base16-vim', { 'do': function('FixupBase16') }
 
 " Ctrl-p
 Plugin 'kien/ctrlp.vim'
@@ -34,7 +37,6 @@ Plugin 'vimwiki/vimwiki'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Custom Keybindings
@@ -103,9 +105,9 @@ set encoding=utf8
 " Define standard filetype
 set ffs=unix,dos,mac
 
-let base16colorspace=256
-colorscheme base16-default-dark
 set background=dark
+let base16colorspace=256
+colorscheme base16-ia-dark
 
 
 set cursorline	" highlight current active line
@@ -160,3 +162,8 @@ let g:ctrlp_working_path_mode = 'ra'
 """""""""""""""""""""""""""""""""""""""""""""""""
 " automatically generate HTML files
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'auto_export': 1}]
+
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif

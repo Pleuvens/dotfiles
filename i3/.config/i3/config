@@ -40,11 +40,13 @@ bindsym $mod+d exec dmenu_run
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
+bindsym $mod+l exec betterlockscreen -l
+
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+#bindsym $mod+j focus left
+#bindsym $mod+k focus down
+#bindsym $mod+l focus up
+#bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -225,4 +227,4 @@ bar {
 exec --no-startup-id nitrogen --restore
 
 # toggle between keyboard layouts
-exec --no-startup-id setxkbmap us,de -option 'grp:alt_shift_toggle'
+exec --no-startup-id setxkbmap fr
