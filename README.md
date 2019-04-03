@@ -46,3 +46,9 @@ To get the most out of my dotfiles I recommend installing [base16-shell](https:/
 Additional configuration
 ------------------------
 Some of the configurations need additional setup or configuration. If that's the case you can find a `README.md` file in the application's directory. Make sure to take a look at it to see what else there is to do to make the configuration work on your system.
+
+Other tools
+-----------
+
+    [base16-vim](https://github.com/chriskempson/base16-vim)
+    [betterlockscreen](https://github.com/pavanjadhaw/betterlockscreen)
