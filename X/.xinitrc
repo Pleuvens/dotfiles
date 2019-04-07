@@ -25,9 +25,7 @@ fi
 
 # start some nice programs
 
-xautolock -locker betterlockscreen -l &
-
-betterlockscreen -u "/home/weedle/Images/wallpapers/" && betterlockscreen -w
+sh /home/weedle/.dotfiles/wallpaper.sh &
 
 exec i3
 
