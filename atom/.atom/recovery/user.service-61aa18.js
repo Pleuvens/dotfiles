@@ -3,31 +3,52 @@ import { history } from '../Helpers';
 
 export const userService = {
     login,
+    register,
     logout,
-    getAll
+    echo
 };
 
-const apiUrl = 'http://localhost:8000';
+const apiUrl = 'http://localhost:8080';
 
-function login(username, password) {
+function login(email, password, organisation) { /* echo */
     const requestOptions = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json'},
-        body: JSON.stringify({ username, password })
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Egalya-Organisation': organisation,
+            'X-Egalya-Appid': email,
+            'X-Egalya-Token': password,
+            'X-Egalya-Channel': organisation + '-channel'
+        },
+        mode: 'cors',
+        body: JSON.stringify({
+            arguments: ["Hello", "world!"]
+        })
     };
 
-    return fetch(`${apiUrl}/users/authenticate`, requestOptions)
+    let user = {
+        email: email,
+        password: password,
+        org: organisation
+    }
+
+    return fetch(`${apiUrl}/1/ledger/contact-cc/echo`, requestOptions)
                 .then(handleResponse)
-                .then(user => {
+                .then(data => {
+                    console.log(data);
                     localStorage.setItem('user', JSON.stringify(user));
                     return user;
                 });
 }
 
+
 function register(email, password, organisation) {
     const requestOptions = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        mode: 'cors',
         body: JSON.stringify({
             email: email,
             password: password,
@@ -37,6 +58,7 @@ function register(email, password, organisation) {
 
     return fetch(`${apiUrl}/1/identity`, requestOptions)
                 .then(handleResponse)
+                .then(data => console.log(data))
 }
 
 function echo() {
@@ -44,31 +66,26 @@ function echo() {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-Egalya-Organisation': ,
+            /*'X-Egalya-Organisation': ,
             'X-Egalya-Appid': ,
             'X-Egalya-Token': ,
-            'X-Egalya-Channel':
+            'X-Egalya-Channel':*/
         },
         body: JSON.stringify({
             arguments: ["Hello", "world!"]
         })
     }
 
-    return fetch(`${apiUrl}/`)
+    return fetch(`${apiUrl}/1/ledger/contact-cc/echo`, requestOptions)
+                .then(handleResponse)
+                .then(data => {
+                    console.log(data)
+                })
 }
 
 function logout() {
     localStorage.removeItem('user');
     history.push('/login');
-}
-
-function getAll() {
-    const requestOptions = {
-        method: 'GET',
-        headers: authHeader()
-    };
-
-    return fetch(`${apiUrl}/users`, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {
