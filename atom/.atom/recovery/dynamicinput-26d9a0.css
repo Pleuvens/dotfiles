@@ -1,0 +1,9 @@
+.dynamic-input {
+    display: flex;
+
+    flex-direction: row;
+}
+
+.dynamic-input-value, .dynamic-input-input {
+    margin-right: 10px;
+}

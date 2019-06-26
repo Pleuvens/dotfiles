@@ -26,6 +26,10 @@ fi
 # start some nice programs
 
 sh /home/weedle/.dotfiles/wallpaper.sh &
+xset s off
+
+export GOPATH=$HOME/Work/Egalya/go
+export PATH=$PATH:/home/weedle/Work/Egalya/go/src/fabric-samples/bin
 
 exec i3
 

@@ -115,4 +115,7 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         eval "$("$BASE16_SHELL/profile_helper.sh")"
 
+export GOPATH="/home/weedle/Work/Egalya/go"
+export PATH=$PATH:$GOPATH/bin:$GOPATH/src/fabric-samples/bin
+
 cd
