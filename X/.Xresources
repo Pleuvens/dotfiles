@@ -76,3 +76,12 @@ URxvt*iso14755: False
 URxvt*perl-ext-common: default,clipboard
 
 *font: xft:fira code:size=11
+
+! -----------------
+!  ROFI settings
+! -----------------
+
+rofi.combi-modi:    window,drun,ssh
+rofi.theme:         solarized
+rofi.font:          hack 10
+rofi.modi:          combi
