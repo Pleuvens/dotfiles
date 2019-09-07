@@ -68,6 +68,7 @@ set ignorecase
 
 " Show linenumbers
 set number
+highlight LineNr ctermbg=224
 
 set showcmd	" show last command in the bottom right
 
@@ -105,12 +106,7 @@ set encoding=utf8
 " Define standard filetype
 set ffs=unix,dos,mac
 
-set background=dark
-let base16colorspace=256
-colorscheme base16-ia-dark
-
-
-set cursorline	" highlight current active line
+"set cursorline	" highlight current active line
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " File Types
